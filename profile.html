@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Profile</title>
+
+<style>
+body{
+    font-family:Arial,sans-serif;
+    background:#f4f4f4;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.profile-card{
+    width:400px;
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+
+h2{
+    text-align:center;
+    color:#ff5e62;
+}
+
+.info{
+    margin:15px 0;
+    font-size:18px;
+}
+
+span{
+    font-weight:bold;
+    color:#333;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    border:none;
+    background:#ff5e62;
+    color:white;
+    border-radius:8px;
+    cursor:pointer;
+    margin-top:15px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="profile-card">
+
+    <h2>User Profile</h2>
+
+    <div class="info">
+        Name:
+        <span id="profileName"></span>
+    </div>
+
+    <div class="info">
+        Email:
+        <span id="profileEmail"></span>
+    </div>
+
+    <div class="info">
+        Phone:
+        <span id="profilePhone"></span>
+    </div>
+
+    <button onclick="logout()">Logout</button>
+
+</div>
+
+<script>
+
+let user = JSON.parse(localStorage.getItem("user"));
+
+if(user){
+
+    document.getElementById("profileName").innerText = user.name;
+
+    document.getElementById("profileEmail").innerText = user.email;
+
+    document.getElementById("profilePhone").innerText = user.phone;
+
+}else{
+
+    alert("No User Found");
+
+    window.location.href = "registration.html";
+}
+
+function logout(){
+
+    localStorage.removeItem("user");
+
+    window.location.href = "registration.html";
+}
+
+</script>
+
+</body>
+</html>
